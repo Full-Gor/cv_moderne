@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - Jean Dupont</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+        
+        body {
+            background-color: #f0f2f5;
+            color: #333;
+            background-image: linear-gradient(rgba(0, 120, 215, 0.1) 1px, transparent 1px),
+                             linear-gradient(90deg, rgba(0, 120, 215, 0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 0.8s forwards;
+        }
+        
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        header {
+            grid-column: 1 / -1;
+            background: #0078d7;
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                45deg,
+                rgba(255, 255, 255, 0.05),
+                rgba(255, 255, 255, 0.05) 10px,
+                transparent 10px,
+                transparent 20px
+            );
+        }
+        
+        .profile-img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 3px solid white;
+            object-fit: cover;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+        }
+        
+        .profile-img:hover {
+            transform: scale(1.05);
+        }
+        
+        .header-text {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .sidebar {
+            padding: 20px;
+            background: #444;
+            color: white;
+            position: relative;
+        }
+        
+        .sidebar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 5px;
+            height: 100%;
+            background: #0078d7;
+        }
+        
+        .main-content {
+            padding: 20px;
+        }
+        
+        h1 { 
+            font-size: 2rem; 
+            margin-bottom: 5px;
+            animation: slideInLeft 0.5s forwards;
+            opacity: 0;
+            transform: translateX(-20px);
+        }
+        
+        @keyframes slideInLeft {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        #title {
+            animation: slideInLeft 0.5s 0.2s forwards;
+            opacity: 0;
+            transform: translateX(-20px);
+        }
+        
+        h2 { 
+            font-size: 1.3rem; 
+            color: #0078d7; 
+            margin: 15px 0;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: #0078d7;
+            transition: width 0.3s;
+        }
+        
+        h2:hover::after {
+            width: 100px;
+        }
+        
+        h3 { 
+            font-size: 1.1rem; 
+            margin: 10px 0;
+        }
+        
+        .contact-list {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+        
+        .contact-list li {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            opacity: 0;
+            transform: translateX(-10px);
+            animation: fadeInList 0.5s forwards;
+        }
+        
+        @keyframes fadeInList {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .contact-list i {
+            width: 20px;
+            margin-right: 8px;
+            color: #0078d7;
+        }
+        
+        .skills-list dt {
+            font-weight: bold;
+            margin-top: 10px;
+            opacity: 0;
+            animation: fadeIn 0.5s forwards;
+        }
+        
+        .skills-list dd {
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+            opacity: 0;
+            animation: fadeIn 0.5s forwards;
+        }
+        
+        .skill-tag {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 5px 10px;
+            border-radius: 3px;
+            font-size: 0.9rem;
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+            margin: 2px;
+        }
+        
+        .skill-tag::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            animation: shine 2s infinite;
+        }
+        
+        @keyframes shine {
+            100% {
+                left: 100%;
+            }
+        }
+        
+        .exp-item, .edu-item {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+            position: relative;
+            padding-left: 15px;
+            opacity: 0;
+            transform: translateY(10px);
+            animation: fadeInUp 0.5s forwards;
+        }
+        
+        .exp-item::before, .edu-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 100%;
+            background: #0078d7;
+        }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .date {
+            color: #e74c3c;
+            font-weight: bold;
+            font-size: 0.9rem;
+            margin: 5px 0;
+        }
+        
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 10px;
+        }
+        
+        .project-card {
+            border: 1px solid #eee;
+            border-radius: 5px;
+            padding: 15px;
+            background: #f9f9f9;
+            transition: transform 0.3s, box-shadow 0.3s;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.5s forwards;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .tech-tags {
+            margin-top: 10px;
+            font-size: 0.8rem;
+            color: #666;
+        }
+        
+        .tech {
+            background: rgba(0, 120, 215, 0.1);
+            color: #0078d7;
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-size: 0.8rem;
+            display: inline-block;
+            margin: 2px;
+        }
+        
+        footer {
+            grid-column: 1 / -1;
+            background: #444;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            font-size: 0.8rem;
+        }
+        
+        @media (max-width: 768px) {
+            .container { grid-template-columns: 1fr; }
+            header { flex-direction: column; }
+            .profile-img { margin-top: 15px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-text">
+                <h1 id="name">Jean Dupont</h1>
+                <p id="title">Développeur Web Full Stack</p>
+            </div>
+            <img src="https://via.placeholder.com/100x100" alt="Profile" class="profile-img">
+        </header>
+        
+        <aside class="sidebar">
+            <h2>Contact</h2>
+            <ul class="contact-list" id="contact-list">
+                <!-- Contacts seront ajoutés ici par JavaScript -->
+            </ul>
+            
+            <h2>Compétences</h2>
+            <dl class="skills-list" id="skills-list">
+                <!-- Compétences seront ajoutées ici par JavaScript -->
+            </dl>
+        </aside>
+        
+        <main class="main-content">
+            <section>
+                <h2>Expérience Professionnelle</h2>
+                <div id="experience">
+                    <!-- Expériences seront ajoutées ici par JavaScript -->
+                </div>
+            </section>
+            
+            <section>
+                <h2>Formation</h2>
+                <div id="education">
+                    <!-- Formations seront ajoutées ici par JavaScript -->
+                </div>
+            </section>
+            
+            <section>
+                <h2>Projets</h2>
+                <div class="projects" id="projects">
+                    <!-- Projets seront ajoutés ici par JavaScript -->
+                </div>
+            </section>
+        </main>
+        
+        <footer>
+            <p>&copy; <span id="current-year"></span> Jean Dupont | CV Developer Web</p>
+        </footer>
+    </div>
+
+    <script>
+        // Données du CV
+        const cvData = {
+            name: 'Jean Dupont',
+            title: 'Développeur Web Full Stack',
+            contact: {
+                email: 'jean.dupont@email.com',
+                phone: '+33 6 12 34 56 78',
+                location: 'Paris, France',
+                website: 'www.jeandupont.dev',
+                github: 'github.com/jeandupont',
+                linkedin: 'linkedin.com/in/jeandupont'
+            },
+            skills: {
+                'Frontend': ['HTML5', 'CSS3', 'JavaScript', 'React', 'Vue.js', 'Angular', 'SASS', 'Tailwind'],
+                'Backend': ['PHP', 'Node.js', 'Express', 'Laravel', 'Symfony', 'Python', 'Django'],
+                'Database': ['MySQL', 'PostgreSQL', 'MongoDB', 'Redis'],
+                'DevOps': ['Docker', 'AWS', 'CI/CD', 'Git', 'GitHub Actions'],
+                'Autres': ['REST API', 'GraphQL', 'TDD', 'Agile/Scrum', 'UI/UX Design']
+            },
+            experience: [
+                {
+                    job: 'Senior Web Developer - TechFusion',
+                    location: 'Paris',
+                    period: 'Jan 2021 - Présent',
+                    desc: 'Développement d\'applications web scalables avec React et Node.js. Chef d\'équipe pour des projets importants.',
+                    achievements: 'Optimisation de la performance, réduction des temps de chargement de 60%. Conception API REST pour 50K+ utilisateurs. Mise en place CI/CD.'
+                },
+                {
+                    job: 'Full Stack Developer - WebInnovate',
+                    location: 'Lyon',
+                    period: 'Mar 2018 - Dec 2020',
+                    desc: 'Développement de solutions web sur mesure utilisant Laravel et Vue.js.',
+                    achievements: 'Plateforme e-commerce générant 2M€ de revenus. Migration vers microservices. Implémentation système d\'authentification.'
+                },
+                {
+                    job: 'Web Developer - DigitalCraft',
+                    location: 'Bordeaux',
+                    period: 'Jul 2016 - Feb 2018',
+                    desc: 'Développement frontend et backend pour applications web et mobiles.',
+                    achievements: 'Application mobile hybride Ionic/Angular. Optimisation SEO avec augmentation trafic de 45%. Templates réutilisables.'
+                }
+            ],
+            education: [
+                {
+                    degree: 'Master en Développement Web',
+                    school: 'École Supérieure d\'Informatique, Paris',
+                    period: '2014 - 2016'
+                },
+                {
+                    degree: 'Licence en Informatique',
+                    school: 'Université de Paris, Paris',
+                    period: '2011 - 2014'
+                }
+            ],
+            projects: [
+                {
+                    name: 'E-commerce Platform',
+                    desc: 'Plateforme e-commerce complète avec paiement, gestion de stock et analyses.',
+                    tech: ['React', 'Node.js', 'MongoDB', 'Stripe', 'AWS']
+                },
+                {
+                    name: 'Task Management App',
+                    desc: 'Application de gestion de tâches avec fonctionnalités collaboratives.',
+                    tech: ['Vue.js', 'Laravel', 'MySQL', 'Docker']
+                },
+                {
+                    name: 'Real Estate Portal',
+                    desc: 'Portail immobilier avec recherche avancée et visualisation sur carte.',
+                    tech: ['Angular', 'Express', 'PostgreSQL', 'Google Maps API']
+                }
+            ]
+        };
+
+        // Fonction pour remplir les données de contact
+        function populateContact() {
+            const contactList = document.getElementById('contact-list');
+            const contactIcons = {
+                email: 'fa-envelope',
+                phone: 'fa-phone',
+                location: 'fa-map-marker-alt',
+                website: 'fa-globe',
+                github: 'fa-github',
+                linkedin: 'fa-linkedin'
+            };
+
+            let delay = 0.1;
+            for (const [key, value] of Object.entries(cvData.contact)) {
+                const li = document.createElement('li');
+                li.innerHTML = `<i class="fas ${contactIcons[key]}"></i> ${value}`;
+                li.style.animationDelay = `${delay}s`;
+                contactList.appendChild(li);
+                delay += 0.1;
+            }
+        }
+
+        // Fonction pour remplir les compétences
+        function populateSkills() {
+            const skillsList = document.getElementById('skills-list');
+            
+            let delay = 0.2;
+            for (const [category, skills] of Object.entries(cvData.skills)) {
+                const dt = document.createElement('dt');
+                dt.textContent = category;
+                dt.style.animationDelay = `${delay}s`;
+                
+                const dd = document.createElement('dd');
+                dd.style.animationDelay = `${delay + 0.1}s`;
+                
+                if (Array.isArray(skills)) {
+                    skills.forEach(skill => {
+                        const span = document.createElement('span');
+                        span.className = 'skill-tag';
+                        span.textContent = skill;
+                        dd.appendChild(span);
+                    });
+                } else {
+                    dd.textContent = skills;
+                }
+                
+                skillsList.appendChild(dt);
+                skillsList.appendChild(dd);
+                delay += 0.2;
+            }
+        }
+
+        // Fonction pour remplir les expériences
+        function populateExperience() {
+            const experienceSection = document.getElementById('experience');
+            
+            let delay = 0.1;
+            cvData.experience.forEach(exp => {
+                const div = document.createElement('div');
+                div.className = 'exp-item';
+                div.style.animationDelay = `${delay}s`;
+                div.innerHTML = `
+                    <h3>${exp.job}</h3>
+                    <p>${exp.location}</p>
+                    <div class="date">${exp.period}</div>
+                    <p>${exp.desc}</p>
+                    <p><strong>Réalisations:</strong> ${exp.achievements}</p>
+                `;
+                experienceSection.appendChild(div);
+                delay += 0.2;
+            });
+        }
+
+        // Fonction pour remplir les formations
+        function populateEducation() {
+            const educationSection = document.getElementById('education');
+            
+            let delay = 0.1;
+            cvData.education.forEach(edu => {
+                const div = document.createElement('div');
+                div.className = 'edu-item';
+                div.style.animationDelay = `${delay}s`;
+                div.innerHTML = `
+                    <h3>${edu.degree}</h3>
+                    <p>${edu.school}</p>
+                    <div class="date">${edu.period}</div>
+                `;
+                educationSection.appendChild(div);
+                delay += 0.2;
+            });
+        }
+
+        // Fonction pour remplir les projets
+        function populateProjects() {
+            const projectsSection = document.getElementById('projects');
+            
+            let delay = 0.1;
+            cvData.projects.forEach(project => {
+                const div = document.createElement('div');
+                div.className = 'project-card';
+                div.style.animationDelay = `${delay}s`;
+                
+                let techHtml = '';
+                if (Array.isArray(project.tech)) {
+                    techHtml = project.tech.map(tech => `<span class="tech">${tech}</span>`).join(' ');
+                } else {
+                    techHtml = project.tech;
+                }
+                
+                div.innerHTML = `
+                    <h3>${project.name}</h3>
+                    <p>${project.desc}</p>
+                    <div class="tech-tags">
+                        <strong>Technologies:</strong> ${techHtml}
+                    </div>
+                `;
+                projectsSection.appendChild(div);
+                delay += 0.15;
+            });
+        }
+
+        // Année courante dans le footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Initialiser les données
+        window.onload = function() {
+            document.getElementById('name').textContent = cvData.name;
+            document.getElementById('title').textContent = cvData.title;
+            populateContact();
+            populateSkills();
+            populateExperience();
+            populateEducation();
+            populateProjects();
+        };
+    </script>
+</body>
+</html>
