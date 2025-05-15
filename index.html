@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CV - Jean Dupont</title>
+    <title>CV - Arnaud Barotteaux</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -31,7 +31,7 @@
             grid-template-columns: 280px 1fr;
             opacity: 0;
             transform: translateY(20px);
-            animation: fadeIn 0.8s forwards;
+            animation: fadeIn 1.2s forwards;
         }
         
         @keyframes fadeIn {
@@ -78,11 +78,11 @@
             position: relative;
             z-index: 1;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s;
+            transition: transform 0.5s;
         }
         
         .profile-img:hover {
-            transform: scale(1.05);
+            transform: scale(1.1);
         }
         
         .header-text {
@@ -114,7 +114,7 @@
         h1 { 
             font-size: 2rem; 
             margin-bottom: 5px;
-            animation: slideInLeft 0.5s forwards;
+            animation: slideInLeft 1s forwards;
             opacity: 0;
             transform: translateX(-20px);
         }
@@ -127,7 +127,7 @@
         }
         
         #title {
-            animation: slideInLeft 0.5s 0.2s forwards;
+            animation: slideInLeft 1s 0.3s forwards;
             opacity: 0;
             transform: translateX(-20px);
         }
@@ -148,7 +148,7 @@
             width: 50px;
             height: 3px;
             background: #0078d7;
-            transition: width 0.3s;
+            transition: width 0.5s;
         }
         
         h2:hover::after {
@@ -171,7 +171,7 @@
             align-items: center;
             opacity: 0;
             transform: translateX(-10px);
-            animation: fadeInList 0.5s forwards;
+            animation: fadeInList 0.8s forwards;
         }
         
         @keyframes fadeInList {
@@ -191,25 +191,31 @@
             font-weight: bold;
             margin-top: 10px;
             opacity: 0;
-            animation: fadeIn 0.5s forwards;
+            animation: fadeIn 0.8s forwards;
         }
         
         .skills-list dd {
             margin-bottom: 10px;
             font-size: 0.9rem;
             opacity: 0;
-            animation: fadeIn 0.5s forwards;
+            animation: fadeIn 0.8s forwards;
         }
         
         .skill-tag {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.15);
             padding: 5px 10px;
             border-radius: 3px;
             font-size: 0.9rem;
             position: relative;
             overflow: hidden;
             display: inline-block;
-            margin: 2px;
+            margin: 3px;
+            transition: transform 0.3s, background 0.3s;
+        }
+        
+        .skill-tag:hover {
+            transform: scale(1.05);
+            background: rgba(255, 255, 255, 0.25);
         }
         
         .skill-tag::before {
@@ -219,8 +225,8 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-            animation: shine 2s infinite;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            animation: shine 3s infinite;
         }
         
         @keyframes shine {
@@ -237,7 +243,7 @@
             padding-left: 15px;
             opacity: 0;
             transform: translateY(10px);
-            animation: fadeInUp 0.5s forwards;
+            animation: fadeInUp 0.8s forwards;
         }
         
         .exp-item::before, .edu-item::before {
@@ -276,15 +282,15 @@
             border-radius: 5px;
             padding: 15px;
             background: #f9f9f9;
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: transform 0.5s, box-shadow 0.5s;
             opacity: 0;
             transform: translateY(20px);
-            animation: fadeInUp 0.5s forwards;
+            animation: fadeInUp 0.8s forwards;
         }
         
         .project-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
         
         .tech-tags {
@@ -301,6 +307,12 @@
             font-size: 0.8rem;
             display: inline-block;
             margin: 2px;
+            transition: transform 0.3s, background 0.3s;
+        }
+        
+        .tech:hover {
+            transform: scale(1.05);
+            background: rgba(0, 120, 215, 0.2);
         }
         
         footer {
@@ -323,10 +335,11 @@
     <div class="container">
         <header>
             <div class="header-text">
-                <h1 id="name">Jean Dupont</h1>
-                <p id="title">Développeur Web Full Stack</p>
+                <h1 id="name">Arnaud Barotteaux</h1>
+                <p id="title">Développeur Web</p>
             </div>
-            <img src="https://via.placeholder.com/100x100" alt="Profile" class="profile-img">
+            <img src="image.png" alt="Profile" class="profile-img">
+
         </header>
         
         <aside class="sidebar">
@@ -365,81 +378,70 @@
         </main>
         
         <footer>
-            <p>&copy; <span id="current-year"></span> Jean Dupont | CV Developer Web</p>
+            <p>&copy; <span id="current-year"></span> Arnaud Barotteaux | CV Développeur Web</p>
         </footer>
     </div>
 
     <script>
         // Données du CV
         const cvData = {
-            name: 'Jean Dupont',
-            title: 'Développeur Web Full Stack',
+            name: 'Arnaud Barotteaux',
+            title: 'Développeur Web',
             contact: {
-                email: 'jean.dupont@email.com',
-                phone: '+33 6 12 34 56 78',
-                location: 'Paris, France',
-                website: 'www.jeandupont.dev',
-                github: 'github.com/jeandupont',
-                linkedin: 'linkedin.com/in/jeandupont'
+                email: 'arnaudbarotteaux@gmail.com',
+                phone: '06 44 76 27 21',
+                location: '4 mail Claude Berry, 93500 Pantin',
+                age: '39 ans (1985)'
             },
             skills: {
-                'Frontend': ['HTML5', 'CSS3', 'JavaScript', 'React', 'Vue.js', 'Angular', 'SASS', 'Tailwind'],
-                'Backend': ['PHP', 'Node.js', 'Express', 'Laravel', 'Symfony', 'Python', 'Django'],
-                'Database': ['MySQL', 'PostgreSQL', 'MongoDB', 'Redis'],
-                'DevOps': ['Docker', 'AWS', 'CI/CD', 'Git', 'GitHub Actions'],
-                'Autres': ['REST API', 'GraphQL', 'TDD', 'Agile/Scrum', 'UI/UX Design']
+                'Développement': ['HTML', 'CSS', 'JavaScript', 'PHP'],
+                'CMS & Outils': ['WordPress', 'Figma', 'Softr', 'Airtable']
             },
             experience: [
                 {
-                    job: 'Senior Web Developer - TechFusion',
-                    location: 'Paris',
-                    period: 'Jan 2021 - Présent',
-                    desc: 'Développement d\'applications web scalables avec React et Node.js. Chef d\'équipe pour des projets importants.',
-                    achievements: 'Optimisation de la performance, réduction des temps de chargement de 60%. Conception API REST pour 50K+ utilisateurs. Mise en place CI/CD.'
+                    job: 'Employé Polyvalent - O\'Tacos',
+                    location: 'Pantin',
+                    period: '2020',
+                    desc: 'Préparation des commandes, service client et entretien du restaurant.',
+                    achievements: 'Gestion efficace des périodes d\'affluence et maintien d\'un service de qualité.'
                 },
                 {
-                    job: 'Full Stack Developer - WebInnovate',
-                    location: 'Lyon',
-                    period: 'Mar 2018 - Dec 2020',
-                    desc: 'Développement de solutions web sur mesure utilisant Laravel et Vue.js.',
-                    achievements: 'Plateforme e-commerce générant 2M€ de revenus. Migration vers microservices. Implémentation système d\'authentification.'
-                },
-                {
-                    job: 'Web Developer - DigitalCraft',
-                    location: 'Bordeaux',
-                    period: 'Jul 2016 - Feb 2018',
-                    desc: 'Développement frontend et backend pour applications web et mobiles.',
-                    achievements: 'Application mobile hybride Ionic/Angular. Optimisation SEO avec augmentation trafic de 45%. Templates réutilisables.'
+                    job: 'Employé Polyvalent - Crousty Poulet',
+                    location: 'Pantin',
+                    period: '2021',
+                    desc: 'Accueil des clients, préparation des plats et gestion de la caisse.',
+                    achievements: 'Participation à l\'amélioration de l\'expérience client et au maintien des normes d\'hygiène.'
                 }
             ],
             education: [
                 {
-                    degree: 'Master en Développement Web',
-                    school: 'École Supérieure d\'Informatique, Paris',
-                    period: '2014 - 2016'
+                    degree: 'Formation Développeur Web / Web Mobile',
+                    school: 'Centre de formation',
+                    period: '2024 - 2025'
                 },
                 {
-                    degree: 'Licence en Informatique',
-                    school: 'Université de Paris, Paris',
-                    period: '2011 - 2014'
+                    degree: 'BEP Vente Action Marchande',
+                    school: 'Lycée professionnel',
+                    period: '2001 - 2003'
+                },
+                {
+                    degree: 'Brevet des Collèges',
+                    school: 'Collège',
+                    period: '2000'
                 }
             ],
             projects: [
                 {
-                    name: 'E-commerce Platform',
-                    desc: 'Plateforme e-commerce complète avec paiement, gestion de stock et analyses.',
-                    tech: ['React', 'Node.js', 'MongoDB', 'Stripe', 'AWS']
+                    name: 'Portfolio Personnel',
+                    desc: 'Création d\'un site web personnel pour présenter mes compétences et projets.',
+                    tech: ['HTML', 'CSS', 'JavaScript']
                 },
                 {
-                    name: 'Task Management App',
-                    desc: 'Application de gestion de tâches avec fonctionnalités collaboratives.',
-                    tech: ['Vue.js', 'Laravel', 'MySQL', 'Docker']
-                },
-                {
-                    name: 'Real Estate Portal',
-                    desc: 'Portail immobilier avec recherche avancée et visualisation sur carte.',
-                    tech: ['Angular', 'Express', 'PostgreSQL', 'Google Maps API']
+                    name: 'Site Vitrine',
+                    desc: 'Développement d\'un site vitrine pour des particuliers.',
+                    tech: ['WordPress', 'CSS', 'PHP']
                 }
+              
             ]
         };
 
@@ -450,18 +452,19 @@
                 email: 'fa-envelope',
                 phone: 'fa-phone',
                 location: 'fa-map-marker-alt',
+                age: 'fa-user',
                 website: 'fa-globe',
                 github: 'fa-github',
                 linkedin: 'fa-linkedin'
             };
 
-            let delay = 0.1;
+            let delay = 0.2;
             for (const [key, value] of Object.entries(cvData.contact)) {
                 const li = document.createElement('li');
                 li.innerHTML = `<i class="fas ${contactIcons[key]}"></i> ${value}`;
                 li.style.animationDelay = `${delay}s`;
                 contactList.appendChild(li);
-                delay += 0.1;
+                delay += 0.15;
             }
         }
 
@@ -469,7 +472,7 @@
         function populateSkills() {
             const skillsList = document.getElementById('skills-list');
             
-            let delay = 0.2;
+            let delay = 0.3;
             for (const [category, skills] of Object.entries(cvData.skills)) {
                 const dt = document.createElement('dt');
                 dt.textContent = category;
@@ -499,7 +502,7 @@
         function populateExperience() {
             const experienceSection = document.getElementById('experience');
             
-            let delay = 0.1;
+            let delay = 0.3;
             cvData.experience.forEach(exp => {
                 const div = document.createElement('div');
                 div.className = 'exp-item';
@@ -520,7 +523,7 @@
         function populateEducation() {
             const educationSection = document.getElementById('education');
             
-            let delay = 0.1;
+            let delay = 0.3;
             cvData.education.forEach(edu => {
                 const div = document.createElement('div');
                 div.className = 'edu-item';
@@ -539,7 +542,7 @@
         function populateProjects() {
             const projectsSection = document.getElementById('projects');
             
-            let delay = 0.1;
+            let delay = 0.3;
             cvData.projects.forEach(project => {
                 const div = document.createElement('div');
                 div.className = 'project-card';
@@ -560,7 +563,7 @@
                     </div>
                 `;
                 projectsSection.appendChild(div);
-                delay += 0.15;
+                delay += 0.2;
             });
         }
 
